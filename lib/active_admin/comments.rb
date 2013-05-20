@@ -69,6 +69,10 @@ ActiveAdmin.after_load do |app|
               end
             end
           end
+
+          def permitted_params
+            params.permit(:active_admin_comment => [:resource, :resource_id, :resource_type, :body, :namespace])
+          end
         end
 
         index do

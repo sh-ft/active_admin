@@ -15,12 +15,33 @@ module ActiveAdmin
         super.sub(/_eq\z/, '') + '?'
       end
 
+# <<<<<<< HEAD
       def method
         super.to_s =~ search_conditions ? super : "#{super}_eq"
       end
 
       def search_conditions
         /(is_true|is_false|is_present|is_blank|is_null|is_not_null)\z/
+# =======
+#       def search_method
+#         method.to_s.match(search_conditions) ? method : "#{method}_eq"
+#       end
+
+#       def checked?
+#         if defined? ActionView::Helpers::InstanceTag
+#           object && ActionView::Helpers::InstanceTag.check_box_checked?(object.send(search_method), checked_value)
+#         else
+#           object && boolean_checked?(object.send(search_method), checked_value)
+#         end
+#       end
+
+#       def input_html_options
+#         { :name => "q[#{search_method}]" }
+#       end
+
+#       def search_conditions
+#         /true|false|present|blank|null|not_null/
+# >>>>>>> d9c593b13a6fadcf0eb8d5bcd14fc1a157954e93
       end
 
     end
